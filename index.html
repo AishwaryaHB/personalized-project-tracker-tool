@@ -186,6 +186,13 @@ const ProductivityTool = () => {
   setTimeBlocks([...timeBlocks, newBlock]);
 };
 
+// Toggle time block as completed vs ongoing/coming up
+const toggleBlockCompletion = (blockId) => {
+  setTimeBlocks(timeBlocks.map(b => 
+    b.id === blockId ? { ...b, completed: !b.completed } : b
+  ));
+};
+    
   const startPomodoro = (blockId) => {
     setPomodoro({
       isActive: true,

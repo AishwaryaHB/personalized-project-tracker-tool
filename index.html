@@ -158,6 +158,38 @@ const ProductivityTool = () => {
     });
   };
 
+    //const addMilestone = (projectId) => {
+  //const newMilestone = {
+    //id: Date.now().toString(),
+    //name: 'New Milestone',
+    //deadline: '',
+    //tasks: [],
+    //completed: false,
+    //isEditing: true
+  //};
+  //updateProject(projectId, {
+    //milestones: [...(projects.find(p => p.id === projectId)?.milestones || []), newMilestone]
+  //});
+//};
+
+const updateMilestone = (projectId, milestoneId, updates) => {
+  const project = projects.find(p => p.id === projectId);
+  if (project) {
+    const updatedMilestones = project.milestones.map(m => 
+      m.id === milestoneId ? { ...m, ...updates } : m
+    );
+    updateProject(projectId, { milestones: updatedMilestones });
+  }
+};
+
+const deleteMilestone = (projectId, milestoneId) => {
+  const project = projects.find(p => p.id === projectId);
+  if (project) {
+    const updatedMilestones = project.milestones.filter(m => m.id !== milestoneId);
+    updateProject(projectId, { milestones: updatedMilestones });
+  }
+};
+
     //const addTimeBlock = (date, duration = 30) => {
     //const newBlock = {
       //id: Date.now().toString(),
@@ -544,12 +576,70 @@ const toggleBlockCompletion = (blockId) => {
                             </p>
                           </div>
                         )}
-                        <button
-                          onClick={() => addMilestone(project.id)}
-                          className="mt-2 text-xs text-blue-600 hover:underline"
-                        >
-                          + Add milestone
-                        </button>
+                        //<button
+                          //onClick={() => addMilestone(project.id)}
+                          //className="mt-2 text-xs text-blue-600 hover:underline"
+                        //>
+                          //+ Add milestone
+                        //</button>
+
+                              {project.milestones && project.milestones.length > 0 && (
+  <div className="mt-2 space-y-1">
+    {project.milestones.map(milestone => (
+      <div key={milestone.id} className="text-xs">
+        {milestone.isEditing ? (
+          <div className="space-y-1">
+            <input
+              type="text"
+              value={milestone.name}
+              onChange={(e) => updateMilestone(project.id, milestone.id, { name: e.target.value })}
+              className="w-full p-1 border rounded text-xs"
+              placeholder="Milestone name"
+            />
+            <input
+              type="date"
+              value={milestone.deadline}
+              onChange={(e) => updateMilestone(project.id, milestone.id, { deadline: e.target.value })}
+              className="w-full p-1 border rounded text-xs"
+            />
+            <div className="flex gap-1">
+              <button
+                onClick={() => updateMilestone(project.id, milestone.id, { isEditing: false })}
+                className="flex-1 bg-green-500 text-white py-1 rounded text-xs"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => deleteMilestone(project.id, milestone.id)}
+                className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div
+            onClick={() => updateMilestone(project.id, milestone.id, { isEditing: true })}
+            className="cursor-pointer hover:bg-white/50 p-1 rounded"
+          >
+            <span className={milestone.completed ? 'line-through' : ''}>
+              📋 {milestone.name}
+            </span>
+            {milestone.deadline && (
+              <span className="text-gray-500 ml-2">({milestone.deadline})</span>
+            )}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+)}
+<button
+  onClick={() => addMilestone(project.id)}
+  className="mt-2 text-xs text-blue-600 hover:underline"
+>
+  + Add milestone
+</button>
                       </div>
                     ))}
                   </div>

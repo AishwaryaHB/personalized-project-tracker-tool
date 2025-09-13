@@ -692,20 +692,31 @@
                                             <option value={90}>1.5 hours</option>
                                             <option value={120}>2 hours</option>
                                           </select>
-                                          <select
-                                            value={block.projectId || ''}
-                                            onChange={(e) => setTimeBlocks(timeBlocks.map(b => 
-                                              b.id === block.id ? { ...b, projectId: e.target.value || null } : b
-                                            ))}
-                                            className="w-full p-1 border rounded text-xs"
-                                          >
-                                            <option value="">Select project</option>
-                                              {console.log('Projects available:', projects) || projects.map(project => (
-                                                  <option key={project.id} value={project.id}>
-                                                      {project.name}
-                                                  </option>
-                                              ))}
-                                          </select>
+                                          //<select
+                                            //value={block.projectId || ''}
+                                            //onChange={(e) => setTimeBlocks(timeBlocks.map(b => 
+                                              //b.id === block.id ? { ...b, projectId: e.target.value || null } : b
+                                            //))}
+                                            //className="w-full p-1 border rounded text-xs"
+                                          //>
+                                            //<option value="">Select project</option>
+                                          //</select>
+                                            
+                                            <select
+                                                value={block.projectId || ''}
+                                                onChange={(e) => setTimeBlocks(timeBlocks.map(b => 
+                                                    b.id === block.id ? { ...b, projectId: e.target.value || null } : b
+                                                                                             ))}
+                                                className="w-full p-1 border rounded text-xs bg-white"
+                                                >
+                                                <option value="">Select project</option>
+                                                {projects.length > 0 ? projects.map(project => (
+                                                    <option key={project.id} value={project.id}>
+                                                        {project.name}
+                                                    </option>
+                                                )) : <option disabled>Create a project first</option>}
+                                            </select>
+
                                           <div className="flex gap-1">
                                             <button
                                               onClick={() => setTimeBlocks(timeBlocks.map(b => 

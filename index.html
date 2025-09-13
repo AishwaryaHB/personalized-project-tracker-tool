@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Productivity Tool</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        // PASTE THE ENTIRE PRODUCTIVITY TOOL COMPONENT CODE HERE
         const { useState, useEffect, useCallback } = React;
-        const { Clock, Play, Pause, Square, Plus, Settings, Calendar, CheckCircle2, Circle, Trash2, Edit2, Save, X, Download, Upload, Bell } = LucideReact;
+        
+        // Simple icon components using text/symbols instead of Lucide
+        const Clock = () => <span>🕐</span>;
+        const Play = () => <span>▶️</span>;
+        const Pause = () => <span>⏸️</span>;
+        const Square = () => <span>⏹️</span>;
+        const Plus = () => <span>➕</span>;
+        const Calendar = () => <span>📅</span>;
+        const Trash2 = () => <span>🗑️</span>;
+        const Edit2 = () => <span>✏️</span>;
+        const Save = () => <span>💾</span>;
+        const X = () => <span>❌</span>;
+        const Download = () => <span>⬇️</span>;
+        const Upload = () => <span>⬆️</span>;
+        const Bell = () => <span>🔔</span>;
 
         //import React, { useState, useEffect, useCallback } from 'react';
         //import { Clock, Play, Pause, Square, Plus, Settings, Calendar, CheckCircle2, Circle, Trash2, Edit2, Save, X, Download, Upload, Bell } from 'lucide-react';

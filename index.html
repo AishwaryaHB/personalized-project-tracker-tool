@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Productivity Tool</title>
+    <title>Personal Project Tracker</title>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -32,12 +32,12 @@
         const ProductivityTool = () => {
           // Default categories with better text contrast
           const defaultCategories = [
-            { id: 'postdoc', name: 'Postdoctoral work', color: '#DBEAFE', textColor: '#1E40AF' },
-            { id: 'scale', name: 'Scale AI', color: '#DCFCE7', textColor: '#166534' },
-            { id: 'algoverse', name: 'Algoverse', color: '#FED7AA', textColor: '#C2410C' },
-            { id: 'personal', name: 'Personal projects', color: '#E0E7FF', textColor: '#4338CA' },
+            { id: 'work', name: 'Work', color: '#DBEAFE', textColor: '#1E40AF' },
+            //{ id: 'scale', name: 'Scale AI', color: '#DCFCE7', textColor: '#166534' },
+            //{ id: 'algoverse', name: 'Algoverse', color: '#FED7AA', textColor: '#C2410C' },
+            { id: 'personal', name: 'Personal projects', color: '#E0E7FF', textColor: '#C2410C' },
             { id: 'fitness', name: 'Fitness', color: '#FCE7F3', textColor: '#BE185D' },
-            { id: 'home', name: 'Home & Life', color: '#CCFBF1', textColor: '#0F766E' },
+            { id: 'misc', name: 'Miscellaneous', color: '#CCFBF1', textColor: '#0F766E' },
             { id: 'social', name: 'Social', color: '#FEF3C7', textColor: '#A16207' }
           ];
 
@@ -291,7 +291,7 @@
               {/* Header */}
               <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 px-6 py-4">
                 <div className="flex items-center justify-between">
-                  <h1 className="text-2xl font-semibold text-gray-900">Personal Productivity Hub</h1>
+                  <h1 className="text-2xl font-semibold text-gray-900">Personal Project Tracking Hub</h1>
                   <div className="flex items-center gap-4">
                     {/* Notifications */}
                     {notifications.length > 0 && (

@@ -158,19 +158,33 @@ const ProductivityTool = () => {
     });
   };
 
-  const addTimeBlock = (date, duration = 30) => {
-    const newBlock = {
-      id: Date.now().toString(),
-      date: date.toISOString().split('T')[0],
-      startTime: '09:00',
-      duration,
-      title: 'New Task',
-      projectId: null,
-      milestoneId: null,
-      isEditing: true
-    };
-    setTimeBlocks([...timeBlocks, newBlock]);
+    //const addTimeBlock = (date, duration = 30) => {
+    //const newBlock = {
+      //id: Date.now().toString(),
+      //date: date.toISOString().split('T')[0],
+      //startTime: '09:00',
+      //duration,
+      //title: 'New Task',
+      //projectId: null,
+      //milestoneId: null,
+      //isEditing: true
+    //};
+    //setTimeBlocks([...timeBlocks, newBlock]);
+
+      const addTimeBlock = (date, duration = 30) => {
+  const newBlock = {
+    id: Date.now().toString(),
+    date: date.toISOString().split('T')[0],
+    startTime: '09:00',
+    duration,
+    title: 'New Task',
+    projectId: null,
+    milestoneId: null,
+    completed: false,
+    isEditing: true
   };
+  setTimeBlocks([...timeBlocks, newBlock]);
+};
 
   const startPomodoro = (blockId) => {
     setPomodoro({

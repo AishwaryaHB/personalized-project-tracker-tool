@@ -752,6 +752,18 @@ const toggleBlockCompletion = (blockId) => {
                                     ))}
                                     className="w-full p-1 border rounded text-xs"
                                   />
+
+                                    //Allow adding tasks to different dates
+
+                                    <input
+  type="date"
+  value={block.date}
+  onChange={(e) => setTimeBlocks(timeBlocks.map(b => 
+    b.id === block.id ? { ...b, date: e.target.value } : b
+  ))}
+  className="w-full p-1 border rounded text-xs"
+/>
+                                    
                                   <select
                                     value={block.duration}
                                     onChange={(e) => setTimeBlocks(timeBlocks.map(b => 

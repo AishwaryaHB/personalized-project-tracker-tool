@@ -700,11 +700,16 @@
                                             className="w-full p-1 border rounded text-xs"
                                           >
                                             <option value="">Select project</option>
-                                            {projects.map(project => (
-                                              <option key={project.id} value={project.id}>
+                                            //{projects.map(project => (
+                                              //<option key={project.id} value={project.id}>
+                                                //{project.name}
+                                              //</option>
+                                            //))}
+                                              {projects.filter(project => !project.isEditing).map(project => (
+                                              <option key={project.id} value={project.id} style={{ color: '#374151', backgroundColor: '#ffffff' }}>
                                                 {project.name}
-                                              </option>
-                                            ))}
+                                                  </option>
+                                                ))}
                                           </select>
                                           <div className="flex gap-1">
                                             <button

@@ -699,18 +699,12 @@
                                             ))}
                                             className="w-full p-1 border rounded text-xs"
                                           >
-                                            //<option value="">Select project</option>
-                                            //{projects.map(project => (
-                                              //<option key={project.id} value={project.id}>
-                                                //{project.name}
-                                              //</option>
-                                            //))}
-                                              <option value="">Select project ({projects.length} total, {projects.filter(p => !p.isEditing).length} available)</option>
-{projects.map(project => (
-  <option key={project.id} value={project.id} style={{ color: '#374151', backgroundColor: '#ffffff' }}>
-    {project.name} {project.isEditing ? '(editing)' : '(saved)'}
-  </option>
-))}
+                                            <option value="">Select project</option>
+                                            {projects.map(project => (
+                                              <option key={project.id} value={project.id}>
+                                                {project.name}
+                                              </option>
+                                            ))}
                                           </select>
                                           <div className="flex gap-1">
                                             <button
